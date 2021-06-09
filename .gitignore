@@ -28,4 +28,4 @@ target/
 
 logs
 
-elk/elasticsearch
+cartisan-elk/elasticsearch
