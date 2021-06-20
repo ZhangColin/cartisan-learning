@@ -12,6 +12,7 @@ import org.elasticsearch.action.update.UpdateRequest;
 import org.elasticsearch.client.HttpAsyncResponseConsumerFactory;
 import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.RestHighLevelClient;
+import org.elasticsearch.client.indices.GetIndexRequest;
 import org.elasticsearch.common.settings.Settings;
 import org.elasticsearch.common.xcontent.XContentType;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,10 +40,15 @@ public class ElasticSearchServiceImpl implements ElasticSearchService {
     public void createIndexRequest(String index) {
         CreateIndexRequest createIndexRequest = new CreateIndexRequest(index)
                 .settings(Settings.builder().put("index.number_of_shards", 3).put("index.number_of_replicas", 0));
+
+        final GetIndexRequest getIndexRequest = new GetIndexRequest(index);
+
         try {
-            CreateIndexResponse response = client.indices().create(createIndexRequest, COMMON_OPTIONS);
-            log.info(" 所有节点确认响应 : {}", response.isAcknowledged());
-            log.info(" 所有分片的复制未超时 :{}", response.isShardsAcknowledged());
+            if (!client.indices().exists(getIndexRequest, COMMON_OPTIONS)) {
+                CreateIndexResponse response = client.indices().create(createIndexRequest, COMMON_OPTIONS);
+                log.info(" 所有节点确认响应 : {}", response.isAcknowledged());
+                log.info(" 所有分片的复制未超时 :{}", response.isShardsAcknowledged());
+            }
         } catch (IOException e) {
             log.error("创建索引库【{}】失败", index, e);
         }
