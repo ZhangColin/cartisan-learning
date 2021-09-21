@@ -1,0 +1,11 @@
+server:
+  port: 8081
+logging:
+  level:
+    org.springframework: debug
+    com.sso: debug
+
+rsa:
+  key:
+    publicKeyFile: /Users/colin/generateKey/id_key_rsa.pub
+    privateKeyFile: /Users/colin/generateKey/id_key_rsa

@@ -1,0 +1,10 @@
+server:
+  port: 8080
+logging:
+  level:
+    com.sso: debug
+
+rsa:
+  key:
+    publicKeyFile: /Users/colin/generateKey/id_key_rsa.pub
+    privateKeyFile: /Users/colin/generateKey/id_key_rsa
