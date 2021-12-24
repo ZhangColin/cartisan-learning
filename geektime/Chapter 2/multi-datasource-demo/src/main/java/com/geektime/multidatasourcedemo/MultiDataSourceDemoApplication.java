@@ -1,6 +1,7 @@
 package com.geektime.multidatasourcedemo;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
@@ -24,7 +25,7 @@ import javax.sql.DataSource;
         JdbcTemplateAutoConfiguration.class
 })
 @Slf4j
-public class MultiDataSourceDemoApplication {
+public class MultiDataSourceDemoApplication implements CommandLineRunner {
     public static void main(String[] args) {
         SpringApplication.run(MultiDataSourceDemoApplication.class);
     }
@@ -65,5 +66,10 @@ public class MultiDataSourceDemoApplication {
     @Resource
     public PlatformTransactionManager barTxManager(DataSource barDataSource) {
         return new DataSourceTransactionManager(barDataSource);
+    }
+
+    @Override
+    public void run(String... args) throws Exception {
+
     }
 }

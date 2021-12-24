@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.geektime</groupId>
-	<artifactId>multi-datasource-demo</artifactId>
+	<artifactId>programmatic-transaction-demo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>multi-datasource-demo</name>
+	<name>programmatic-transaction-demo</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>1.8</java.version>
