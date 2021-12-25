@@ -42,7 +42,7 @@ public class JpaComplexDemoApplication implements ApplicationRunner {
     }
 
     @Override
-    @Transactional
+//    @Transactional
     public void run(ApplicationArguments args) throws Exception {
         initOrders();
         findOrders();

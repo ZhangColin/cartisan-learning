@@ -25,7 +25,7 @@ import java.util.List;
 public class CoffeeOrder extends BaseEntity implements Serializable {
     private String customer;
 
-    @ManyToMany
+    @ManyToMany(fetch=FetchType.EAGER)
     @JoinTable(name="t_order_coffees")
     private List<Coffee> coffees;
 
